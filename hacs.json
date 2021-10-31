@@ -1,0 +1,10 @@
+{
+    "name": "openHAB",
+    "hacs": "0.0.1",
+    "domains": [
+        "binary_sensor",
+        "sensor",
+        "switch"
+    ],
+    "homeassistant": "2021.9.0"
+}
