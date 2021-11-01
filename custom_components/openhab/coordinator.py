@@ -1,4 +1,4 @@
-"""Data update coordinator for integration blueprint."""
+"""Data update coordinator for integration openHAB."""
 from __future__ import annotations
 
 from typing import Any
