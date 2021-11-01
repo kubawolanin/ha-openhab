@@ -9,7 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DEFAULT_NAME, DOMAIN, ICON, SWITCH
-from .entity import OpenHabEntity
+from .entity import OpenHABEntity
 
 
 async def async_setup_entry(
@@ -19,26 +19,32 @@ async def async_setup_entry(
 ) -> None:
     """Setup sensor platform."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    async_add_devices([OpenHabBinarySwitch(coordinator)])
+    async_add_devices(
+        OpenHABBinarySwitch(hass, coordinator, item)
+        for item in coordinator.data.values()
+        if item.type_ == "Switch"
+    )
 
 
-class OpenHabBinarySwitch(OpenHabEntity, SwitchEntity):
+class OpenHABBinarySwitch(OpenHABEntity, SwitchEntity):
     """openhab switch class."""
-
-    _attr_icon = ICON
-    _attr_name = f"{DEFAULT_NAME}_{SWITCH}"
 
     async def async_turn_on(self, **kwargs: dict[str, Any]) -> None:
         """Turn on the switch."""
-        await self.coordinator.api.async_set_title("foo")
+        await self.hass.async_add_executor_job(self.item.on)
         await self.coordinator.async_request_refresh()
 
     async def async_turn_off(self, **kwargs: dict[str, Any]) -> None:
         """Turn off the switch."""
-        await self.coordinator.api.async_set_title("bar")
+        await self.hass.async_add_executor_job(self.item.off)
+        await self.coordinator.async_request_refresh()
+
+    async def async_toggle(self, **kwargs: dict[str, Any]) -> None:
+        """Turn off the switch."""
+        await self.hass.async_add_executor_job(self.item.toggle)
         await self.coordinator.async_request_refresh()
 
     @property
     def is_on(self) -> bool:
         """Return true if the switch is on."""
-        return self.coordinator.data.get("title", "") == "foo"
+        return self.item._state == "ON"

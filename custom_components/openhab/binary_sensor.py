@@ -5,7 +5,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import BINARY_SENSOR, BINARY_SENSOR_DEVICE_CLASS, DEFAULT_NAME, DOMAIN
-from .entity import OpenHabEntity
+from .entity import OpenHABEntity
 
 
 async def async_setup_entry(
@@ -15,16 +15,17 @@ async def async_setup_entry(
 ) -> None:
     """Setup binary_sensor platform."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    async_add_devices([OpenHabBinarySensor(coordinator)])
+    async_add_devices(
+        OpenHABBinarySensor(hass, coordinator, item)
+        for item in coordinator.data.values()
+        if item.type_ == "Contact"
+    )
 
 
-class OpenHabBinarySensor(OpenHabEntity, BinarySensorEntity):
+class OpenHABBinarySensor(OpenHABEntity, BinarySensorEntity):
     """openhab binary_sensor class."""
-
-    _attr_name = f"{DEFAULT_NAME}_{BINARY_SENSOR}"
-    _attr_device_class = BINARY_SENSOR_DEVICE_CLASS
 
     @property
     def is_on(self) -> bool:
         """Return true if the binary_sensor is on."""
-        return self.coordinator.data.get("title", "") == "foo"
+        return self.item._state == "OPEN"

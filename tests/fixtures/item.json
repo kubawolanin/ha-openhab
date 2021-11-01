@@ -1,0 +1,20 @@
+{
+    "link": "https://demo.openhab.org/rest/items/Wifi_Level",
+    "state": "2",
+    "stateDescription": {
+        "pattern": "%d/4",
+        "readOnly": false,
+        "options": []
+    },
+    "editable": true,
+    "type": "Number",
+    "name": "Wifi_Level",
+    "label": "Wifi Level",
+    "category": "signal",
+    "tags": [
+        "Status"
+    ],
+    "groupNames": [
+        "FF_Office"
+    ]
+}

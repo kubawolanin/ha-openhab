@@ -7,11 +7,12 @@ from homeassistant import config_entries
 from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 
-from .api import OpenHabApiClient
-from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN, PLATFORMS
+from .api import OpenHABApiClient
+from .const import CONF_BASE_URL, CONF_PASSWORD, CONF_USERNAME, DOMAIN, PLATFORMS
+from .utils import strip_ip
 
 
-class OpenHabFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     """Config flow for openHAB."""
 
     VERSION = 1
@@ -28,14 +29,16 @@ class OpenHabFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         #     return self.async_abort(reason="single_instance_allowed")
 
         if user_input is not None:
-            if await self._test_credentials(
-                user_input[CONF_USERNAME], user_input[CONF_PASSWORD]
-            ):
-                return self.async_create_entry(
-                    title=user_input[CONF_USERNAME], data=user_input
-                )
-            else:
-                errors["base"] = "auth"
+            # if await self._test_credentials(
+            #     user_input[CONF_BASE_URL],
+            #     user_input[CONF_USERNAME],
+            #     user_input[CONF_PASSWORD],
+            # ):
+            return self.async_create_entry(
+                title=strip_ip(user_input[CONF_BASE_URL]), data=user_input
+            )
+            # else:
+            #     errors["base"] = "auth"
 
         if user_input is None:
             user_input = {}
@@ -45,9 +48,12 @@ class OpenHabFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             data_schema=vol.Schema(
                 {
                     vol.Required(
+                        CONF_BASE_URL, default=user_input.get(CONF_BASE_URL, "http://")
+                    ): str,
+                    vol.Optional(
                         CONF_USERNAME, default=user_input.get(CONF_USERNAME, "")
                     ): str,
-                    vol.Required(
+                    vol.Optional(
                         CONF_PASSWORD, default=user_input.get(CONF_PASSWORD, "")
                     ): str,
                 }
@@ -58,21 +64,21 @@ class OpenHabFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     @staticmethod
     @callback
     def async_get_options_flow(config_entry: config_entries.ConfigEntry):
-        return OpenHabOptionsFlowHandler(config_entry)
+        return OpenHABOptionsFlowHandler(config_entry)
 
-    async def _test_credentials(self, username: str, password: str):
+    async def _test_credentials(self, base_url: str, username: str, password: str):
         """Return true if credentials is valid."""
         try:
-            session = async_create_clientsession(self.hass)
-            client = OpenHabApiClient(username, password, session)
-            await client.async_get_data()
+            # session = async_create_clientsession(self.hass)
+            client = OpenHABApiClient(self.hass, base_url, username, password)
+            await self.hass.async_add_executor_job(client.async_get_version())
             return True
         except Exception:  # pylint: disable=broad-except
             pass
         return False
 
 
-class OpenHabOptionsFlowHandler(config_entries.OptionsFlow):
+class OpenHABOptionsFlowHandler(config_entries.OptionsFlow):
     """openHAB config flow options handler."""
 
     def __init__(self, config_entry: config_entries.ConfigEntry):

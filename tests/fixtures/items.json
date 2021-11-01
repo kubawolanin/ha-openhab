@@ -1,0 +1,2004 @@
+[
+    {
+        "link": "https://demo.openhab.org/rest/items/Shutter_GF_Living",
+        "state": "0",
+        "editable": true,
+        "type": "Rollershutter",
+        "name": "Shutter_GF_Living",
+        "label": "Living Room Shutters",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "GF_Living",
+            "Shutters"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/Weather_Chart",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "Weather_Chart",
+        "label": "Outside Temperature",
+        "tags": [
+            "WeatherService"
+        ],
+        "groupNames": []
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/Status",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "Status",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/Thermostat",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "Thermostat",
+        "label": "Thermostat",
+        "category": "temperature",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "GF_Kitchen"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_FF_Daughter_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_FF_Daughter_Ceiling",
+        "label": "Amy\u0027s Room Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "FF_Daughter",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Window_FF_Bed",
+        "state": "OPEN",
+        "transformedState": "open",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Window_FF_Bed",
+        "label": "Bedroom Window",
+        "tags": [
+            "Window"
+        ],
+        "groupNames": [
+            "FF_Bed",
+            "Windows"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/GF_Toilet",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "GF_Toilet",
+        "label": "Toilet",
+        "category": "bath",
+        "tags": [
+            "Bathroom"
+        ],
+        "groupNames": [
+            "gGF"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/FF_Corridor",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "FF_Corridor",
+        "label": "Corridor",
+        "category": "corridor",
+        "tags": [
+            "Corridor"
+        ],
+        "groupNames": [
+            "gFF"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Weather_Chart_Period",
+        "state": "NULL",
+        "editable": true,
+        "type": "Number",
+        "name": "Weather_Chart_Period",
+        "label": "Weather Chart Period",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/FF_Office",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "FF_Office",
+        "label": "Office",
+        "category": "office",
+        "tags": [
+            "Room"
+        ],
+        "groupNames": [
+            "gFF"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_C_Staircase",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_C_Staircase",
+        "label": "Basement Staircase Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "gC",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_FF_Office_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_FF_Office_Ceiling",
+        "label": "Office Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "FF_Office",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_FF_Bed_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_FF_Bed_Ceiling",
+        "label": "Master Bedroom Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "FF_Bed",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_GF_Corridor",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_GF_Corridor",
+        "label": "Corridor Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "GF_Corridor",
+            "Heating"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Sun_Azimuth",
+        "state": "290.99280304033516 °",
+        "stateDescription": {
+            "pattern": "%.2f %unit%",
+            "readOnly": true,
+            "options": []
+        },
+        "editable": true,
+        "type": "Number:Angle",
+        "name": "Sun_Azimuth",
+        "label": "Sun Azimuth",
+        "category": "sun",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "Sun"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_GF_Kitchen",
+        "state": "20.4 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_GF_Kitchen",
+        "label": "Kitchen Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature",
+            "CurrentTemperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "GF_Kitchen"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Weather_LastUpdate",
+        "state": "NULL",
+        "stateDescription": {
+            "pattern": "%1$ta %1$tR",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "DateTime",
+        "name": "Weather_LastUpdate",
+        "label": "Last Weather Update",
+        "category": "clock",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "Sun"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/GF_Corridor",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "GF_Corridor",
+        "label": "Corridor",
+        "category": "corridor",
+        "tags": [
+            "Corridor"
+        ],
+        "groupNames": [
+            "gGF"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Shutter_all",
+        "state": "NULL",
+        "editable": true,
+        "type": "Switch",
+        "name": "Shutter_all",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/AVReceiver",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "AVReceiver",
+        "label": "AV Receiver",
+        "category": "receiver",
+        "tags": [
+            "Receiver"
+        ],
+        "groupNames": [
+            "GF_Living"
+        ]
+    },
+    {
+        "members": [],
+        "groupType": "Contact",
+        "function": {
+            "name": "EQUALITY"
+        },
+        "link": "https://demo.openhab.org/rest/items/Windows",
+        "state": "UNDEF",
+        "stateDescription": {
+            "pattern": "(%d)",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Group",
+        "name": "Windows",
+        "label": "Open windows",
+        "category": "contact",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/DemoItems",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "DemoItems",
+        "label": "Demo Items",
+        "tags": [
+            "Equipment"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Window_FF_Office_Window",
+        "state": "OPEN",
+        "transformedState": "open",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Window_FF_Office_Window",
+        "label": "Office Window",
+        "tags": [
+            "Window"
+        ],
+        "groupNames": [
+            "FF_Office",
+            "Windows"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_GF_Living",
+        "state": "20.5 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_GF_Living",
+        "label": "Living Room Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "GF_Living"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/DemoBlinds",
+        "state": "89",
+        "stateDescription": {
+            "pattern": "%d %%",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Dimmer",
+        "name": "DemoBlinds",
+        "label": "Demo Blinds",
+        "category": "window",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "DemoItems"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Window_GF_Kitchen",
+        "state": "CLOSED",
+        "transformedState": "closed",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Window_GF_Kitchen",
+        "label": "Kitchen Window",
+        "tags": [
+            "Window"
+        ],
+        "groupNames": [
+            "GF_Kitchen",
+            "Windows"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/Sun",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "Sun",
+        "label": "Sun",
+        "category": "sun",
+        "tags": [
+            "Equipment"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Moon_Azimuth",
+        "state": "287.42316542942643 °",
+        "stateDescription": {
+            "pattern": "%.2f %unit%",
+            "readOnly": true,
+            "options": []
+        },
+        "editable": true,
+        "type": "Number:Angle",
+        "name": "Moon_Azimuth",
+        "label": "Moon Azimuth",
+        "category": "moon",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "Moon"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_GF_Toilet_Mirror",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_GF_Toilet_Mirror",
+        "label": "Toilet Mirror Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "GF_Toilet",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_FF_Son",
+        "state": "20.8 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_FF_Son",
+        "label": "Oli\u0027s Room Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "FF_Son"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_C_Washing_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_C_Washing_Ceiling",
+        "label": "Washing Room Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "gC",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_FF_Son_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_FF_Son_Ceiling",
+        "label": "Oli\u0027s Room Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "FF_Son",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Wifi_Level",
+        "state": "2",
+        "stateDescription": {
+            "pattern": "%d/4",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Number",
+        "name": "Wifi_Level",
+        "label": "Wifi Level",
+        "category": "signal",
+        "tags": [
+            "Status"
+        ],
+        "groupNames": [
+            "FF_Office"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Volume",
+        "state": "43.0",
+        "stateDescription": {
+            "pattern": "%.1f %%",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Dimmer",
+        "name": "Volume",
+        "label": "Volume",
+        "category": "soundvolume",
+        "tags": [
+            "Control",
+            "SoundVolume"
+        ],
+        "groupNames": [
+            "AVReceiver"
+        ]
+    },
+    {
+        "members": [],
+        "groupType": "Switch",
+        "function": {
+            "name": "EQUALITY"
+        },
+        "link": "https://demo.openhab.org/rest/items/Heating",
+        "state": "ON",
+        "stateDescription": {
+            "pattern": "(%d)",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Group",
+        "name": "Heating",
+        "label": "No. of Active Heatings",
+        "category": "heating",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Shutter_FF_Bed",
+        "state": "0",
+        "editable": true,
+        "type": "Rollershutter",
+        "name": "Shutter_FF_Bed",
+        "label": "Bedroom Shutters",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "FF_Bed",
+            "Shutters"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_FF_Bed",
+        "state": "22.3 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_FF_Bed",
+        "label": "Bedroom Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "FF_Bed"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/Moon",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "Moon",
+        "label": "Moon",
+        "category": "moon",
+        "tags": [
+            "Equipment"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_FF_Corridor_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_FF_Corridor_Ceiling",
+        "label": "Upstairs Corridor Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "FF_Corridor",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Sun_Elevation",
+        "state": "-21.78059433118355 °",
+        "stateDescription": {
+            "pattern": "%.2f %unit%",
+            "readOnly": true,
+            "options": []
+        },
+        "editable": true,
+        "type": "Number:Angle",
+        "name": "Sun_Elevation",
+        "label": "Sun Elevation",
+        "category": "sun",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "Sun"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/AlarmSystem_PinCode",
+        "state": "1234",
+        "editable": true,
+        "type": "Number",
+        "name": "AlarmSystem_PinCode",
+        "label": "Alarm System Pin Code",
+        "category": "lock",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/GF_Kitchen_SmokeAlarm",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "GF_Kitchen_SmokeAlarm",
+        "label": "Smoke Alarm",
+        "category": "smoke",
+        "tags": [
+            "Alarm",
+            "Smoke"
+        ],
+        "groupNames": [
+            "GF_Kitchen"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Window_GF_Frontdoor",
+        "state": "OPEN",
+        "transformedState": "open",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Window_GF_Frontdoor",
+        "label": "Front Door",
+        "category": "frontdoor",
+        "tags": [
+            "FrontDoor"
+        ],
+        "groupNames": [
+            "GF_Corridor",
+            "Windows"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_C_Corridor_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_C_Corridor_Ceiling",
+        "label": "Basement Corridor Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "gC",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/RGBLight",
+        "state": "162,41,100",
+        "editable": true,
+        "type": "Color",
+        "name": "RGBLight",
+        "label": "Demo RGB Light",
+        "category": "slider",
+        "tags": [
+            "Control",
+            "Light"
+        ],
+        "groupNames": [
+            "DemoItems"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/DemoLocation",
+        "state": "52.5200066,13.4049540",
+        "editable": true,
+        "type": "Location",
+        "name": "DemoLocation",
+        "label": "Brandenburg Gate Berlin",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_FF_Bath",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_FF_Bath",
+        "label": "Bathroom Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "FF_Bath",
+            "Heating"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/FF_Daughter",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "FF_Daughter",
+        "label": "Amelia\u0027s Room",
+        "category": "girl_1",
+        "tags": [
+            "Bedroom"
+        ],
+        "groupNames": [
+            "gFF"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_GF_Kitchen_Table",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_GF_Kitchen_Table",
+        "label": "Kitchen Table Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "GF_Kitchen",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/OliverPos",
+        "state": "52.5027600435014,13.755912087598366",
+        "editable": true,
+        "type": "Location",
+        "name": "OliverPos",
+        "label": "Oliver\u0027s Position",
+        "category": "boy_5",
+        "tags": [
+            "Status"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_GF_Living_Table",
+        "state": "0.0",
+        "editable": true,
+        "type": "Dimmer",
+        "name": "Light_GF_Living_Table",
+        "label": "Living Table Lights",
+        "tags": [
+            "Control",
+            "Light"
+        ],
+        "groupNames": [
+            "GF_Living",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Window_GF_Toilet",
+        "state": "OPEN",
+        "transformedState": "open",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Window_GF_Toilet",
+        "label": "Toilet Window",
+        "tags": [
+            "Window"
+        ],
+        "groupNames": [
+            "GF_Toilet",
+            "Windows"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/DemoString",
+        "state": "Hello from Groovy! Open windows: 5",
+        "editable": true,
+        "type": "String",
+        "name": "DemoString",
+        "label": "String",
+        "category": "text",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "DemoItems"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_GF_Corridor_Wardrobe",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_GF_Corridor_Wardrobe",
+        "label": "Wardrobe Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "GF_Corridor",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/AmeliaPos",
+        "state": "52.851699902020584,13.169633855490853",
+        "editable": true,
+        "type": "Location",
+        "name": "AmeliaPos",
+        "label": "Amelia\u0027s Position",
+        "category": "girl_1",
+        "tags": [
+            "Status"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_FF_Bed",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_FF_Bed",
+        "label": "Master Bedroom Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "FF_Bed",
+            "Heating"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Garage_Door",
+        "state": "CLOSED",
+        "transformedState": "closed",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Garage_Door",
+        "label": "Garage Door",
+        "category": "garagedoor",
+        "tags": [
+            "GarageDoor"
+        ],
+        "groupNames": [
+            "Garden",
+            "Windows"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/gFF",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "gFF",
+        "label": "First Floor",
+        "category": "firstfloor",
+        "tags": [
+            "FirstFloor"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_FF_Daughter",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_FF_Daughter",
+        "label": "Amy\u0027s Room Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "FF_Daughter",
+            "Heating"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Weather_Temp_Min",
+        "state": "13 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Weather_Temp_Min",
+        "label": "Todays Minimum",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Weather",
+            "Weather_Chart"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Window_FF_Office_Door",
+        "state": "CLOSED",
+        "transformedState": "closed",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Window_FF_Office_Door",
+        "label": "Balcony Door",
+        "category": "door",
+        "tags": [
+            "Door"
+        ],
+        "groupNames": [
+            "FF_Office",
+            "Windows"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_FF_Office",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_FF_Office",
+        "label": "Office Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "FF_Office",
+            "Heating"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/DimmedLight",
+        "state": "33",
+        "stateDescription": {
+            "pattern": "%d %%",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Dimmer",
+        "name": "DimmedLight",
+        "label": "Demo Light Dimmer",
+        "category": "slider",
+        "tags": [
+            "Control",
+            "Light"
+        ],
+        "groupNames": [
+            "DemoItems"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/FF_Bath",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "FF_Bath",
+        "label": "Bathroom",
+        "category": "bath",
+        "tags": [
+            "Bathroom"
+        ],
+        "groupNames": [
+            "gFF"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Shutter_GF_Kitchen",
+        "state": "0",
+        "editable": true,
+        "type": "Rollershutter",
+        "name": "Shutter_GF_Kitchen",
+        "label": "Kitchen Shutters",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "GF_Kitchen",
+            "Shutters"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_GF_Toilet",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_GF_Toilet",
+        "label": "Toilet Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "GF_Toilet",
+            "Heating"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_C_Workshop",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_C_Workshop",
+        "label": "Workshop Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "gC",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_FF_Son",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_FF_Son",
+        "label": "Oli\u0027s Room Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "FF_Son",
+            "Heating"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_GF_Kitchen_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_GF_Kitchen_Ceiling",
+        "label": "Kitchen Ceiling Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "GF_Kitchen",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Shutter_FF_Office_Window",
+        "state": "0",
+        "editable": true,
+        "type": "Rollershutter",
+        "name": "Shutter_FF_Office_Window",
+        "label": "Office Window Shutters",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "FF_Office",
+            "Shutters"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Lock_GF_Frontdoor",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Lock_GF_Frontdoor",
+        "label": "Front Door Lock",
+        "category": "lock",
+        "tags": [
+            "Lock"
+        ],
+        "groupNames": [
+            "GF_Corridor"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/GF_Kitchen",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "GF_Kitchen",
+        "label": "Kitchen",
+        "category": "kitchen",
+        "tags": [
+            "Kitchen"
+        ],
+        "groupNames": [
+            "gGF"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Window_GF_Living",
+        "state": "CLOSED",
+        "transformedState": "closed",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Window_GF_Living",
+        "label": "Terrace Door",
+        "category": "door",
+        "tags": [
+            "Door"
+        ],
+        "groupNames": [
+            "GF_Living",
+            "Windows"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Sunset_Time",
+        "state": "2021-10-06T18:31:00.000+0200",
+        "stateDescription": {
+            "pattern": "%1$ta %1$tR",
+            "readOnly": true,
+            "options": []
+        },
+        "editable": true,
+        "type": "DateTime",
+        "name": "Sunset_Time",
+        "label": "Sunset",
+        "category": "sunset",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "Sun"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_GF_Toilet",
+        "state": "17.6 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_GF_Toilet",
+        "label": "Toilet Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "GF_Toilet"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/DemoSwitch",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "DemoSwitch",
+        "label": "Switch",
+        "category": "switch",
+        "tags": [
+            "Switch"
+        ],
+        "groupNames": [
+            "DemoItems"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_FF_Daughter",
+        "state": "17.9 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_FF_Daughter",
+        "label": "Amelia\u0027s Room Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "FF_Daughter"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/gGF",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "gGF",
+        "label": "Ground Floor",
+        "category": "groundfloor",
+        "tags": [
+            "GroundFloor"
+        ],
+        "groupNames": []
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/Shutters",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "Shutters",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_GF_Toilet_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_GF_Toilet_Ceiling",
+        "label": "Toilet Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "GF_Toilet",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_FF_Bath_Mirror",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_FF_Bath_Mirror",
+        "label": "Bathroom Mirror Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "FF_Bath",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Weather_Temp_Max",
+        "state": "13 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Weather_Temp_Max",
+        "label": "Todays Maximum",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Weather",
+            "Weather_Chart"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Sunrise_Time",
+        "state": "2021-10-06T07:17:00.000+0200",
+        "stateDescription": {
+            "pattern": "%1$ta %1$tR",
+            "readOnly": true,
+            "options": []
+        },
+        "editable": true,
+        "type": "DateTime",
+        "name": "Sunrise_Time",
+        "label": "Sunrise",
+        "category": "sunrise",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "Sun"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/Garden",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "Garden",
+        "label": "Garden",
+        "category": "garden",
+        "tags": [
+            "Garden"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_FF_Bath_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_FF_Bath_Ceiling",
+        "label": "Bathroom Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "FF_Bath",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_Setpoint",
+        "state": "23 °C",
+        "stateDescription": {
+            "minimum": 18,
+            "maximum": 35,
+            "step": 0.1,
+            "pattern": "%.1f °C",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_Setpoint",
+        "label": "Temperature",
+        "category": "temperature",
+        "tags": [
+            "Temperature",
+            "Setpoint"
+        ],
+        "groupNames": [
+            "Thermostat"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/DemoShutter",
+        "state": "100",
+        "editable": true,
+        "type": "Rollershutter",
+        "name": "DemoShutter",
+        "label": "Demo Roller Shutter",
+        "category": "rollershutter",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "DemoItems"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/TestSetpoint2",
+        "state": "NULL",
+        "stateDescription": {
+            "minimum": 17,
+            "maximum": 28,
+            "step": 0.5,
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "TestSetpoint2",
+        "category": "",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/ImageURL",
+        "state": "NULL",
+        "editable": true,
+        "type": "String",
+        "name": "ImageURL",
+        "label": "Image URL",
+        "tags": [],
+        "groupNames": [
+            "DemoItems"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Radio_Station",
+        "state": "NULL",
+        "editable": true,
+        "type": "Number",
+        "name": "Radio_Station",
+        "label": "Radio",
+        "category": "network",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "AVReceiver"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_Garden_Garage",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_Garden_Garage",
+        "label": "Garage Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "Garden",
+            "Lights"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/Weather",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "Weather",
+        "label": "Weather",
+        "category": "sun",
+        "tags": [
+            "WeatherService"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Thermostat_Mode",
+        "state": "NULL",
+        "stateDescription": {
+            "pattern": "%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "String",
+        "name": "Thermostat_Mode",
+        "label": "Thermostat Mode",
+        "category": "temperature",
+        "tags": [
+            "Control"
+        ],
+        "groupNames": [
+            "Thermostat"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Moon_Phase",
+        "state": "NEW",
+        "stateDescription": {
+            "pattern": "%s",
+            "readOnly": true,
+            "options": [
+                {
+                    "value": "NEW",
+                    "label": "New moon"
+                },
+                {
+                    "value": "WAXING_CRESCENT",
+                    "label": "Waxing crescent"
+                },
+                {
+                    "value": "FIRST_QUARTER",
+                    "label": "First quarter"
+                },
+                {
+                    "value": "WAXING_GIBBOUS",
+                    "label": "Waxing gibbous"
+                },
+                {
+                    "value": "FULL",
+                    "label": "Full moon"
+                },
+                {
+                    "value": "WANING_GIBBOUS",
+                    "label": "Waning gibbous"
+                },
+                {
+                    "value": "THIRD_QUARTER",
+                    "label": "Third quarter"
+                },
+                {
+                    "value": "WANING_CRESCENT",
+                    "label": "Waning crescent"
+                }
+            ]
+        },
+        "commandDescription": {
+            "commandOptions": [
+                {
+                    "command": "NEW",
+                    "label": "New moon"
+                },
+                {
+                    "command": "WAXING_CRESCENT",
+                    "label": "Waxing crescent"
+                },
+                {
+                    "command": "FIRST_QUARTER",
+                    "label": "First quarter"
+                },
+                {
+                    "command": "WAXING_GIBBOUS",
+                    "label": "Waxing gibbous"
+                },
+                {
+                    "command": "FULL",
+                    "label": "Full moon"
+                },
+                {
+                    "command": "WANING_GIBBOUS",
+                    "label": "Waning gibbous"
+                },
+                {
+                    "command": "THIRD_QUARTER",
+                    "label": "Third quarter"
+                },
+                {
+                    "command": "WANING_CRESCENT",
+                    "label": "Waning crescent"
+                }
+            ]
+        },
+        "editable": true,
+        "type": "String",
+        "name": "Moon_Phase",
+        "label": "Moon Phase",
+        "category": "moon",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "Moon"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/gC",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "gC",
+        "label": "Cellar",
+        "category": "cellar",
+        "tags": [
+            "Basement"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Shutter_FF_Bath",
+        "state": "100",
+        "editable": true,
+        "type": "Rollershutter",
+        "name": "Shutter_FF_Bath",
+        "label": "Bathroom Shutters",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "FF_Bath",
+            "Shutters"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Shutter_FF_Office_Door",
+        "state": "0",
+        "editable": true,
+        "type": "Rollershutter",
+        "name": "Shutter_FF_Office_Door",
+        "label": "Balcony Door Shutters",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "FF_Office",
+            "Shutters"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_GF_Living",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_GF_Living",
+        "label": "Living Room Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "GF_Living",
+            "Heating"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Weather_Temperature",
+        "state": "13 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Weather_Temperature",
+        "label": "Outside Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Weather",
+            "Weather_Chart"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_Garden_Terrace",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_Garden_Terrace",
+        "label": "Terrace Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "Garden",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Window_FF_Bath",
+        "state": "OPEN",
+        "transformedState": "open",
+        "stateDescription": {
+            "pattern": "MAP(en.map):%s",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Contact",
+        "name": "Window_FF_Bath",
+        "label": "Bathroom Window",
+        "tags": [
+            "Window"
+        ],
+        "groupNames": [
+            "FF_Bath",
+            "Windows"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/GF_Living",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "GF_Living",
+        "label": "Living Room",
+        "category": "video",
+        "tags": [
+            "LivingRoom"
+        ],
+        "groupNames": [
+            "gGF"
+        ]
+    },
+    {
+        "members": [],
+        "groupType": "Number",
+        "function": {
+            "name": "AVG"
+        },
+        "link": "https://demo.openhab.org/rest/items/Temperature",
+        "state": "20.7",
+        "editable": true,
+        "type": "Group",
+        "name": "Temperature",
+        "label": "Avg. Room Temperature",
+        "category": "temperature",
+        "tags": [],
+        "groupNames": [
+            "Status"
+        ]
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/FF_Son",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "FF_Son",
+        "label": "Oliver\u0027s Room",
+        "category": "boy_5",
+        "tags": [
+            "Bedroom"
+        ],
+        "groupNames": [
+            "gFF"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Scene_General",
+        "state": "3",
+        "editable": true,
+        "type": "Number",
+        "name": "Scene_General",
+        "label": "Scene",
+        "category": "sofa",
+        "tags": [
+            "Points"
+        ],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_GF_Corridor",
+        "state": "22.1 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_GF_Corridor",
+        "label": "Downstairs Corridor Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "GF_Corridor"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Shutter_GF_Toilet",
+        "state": "100",
+        "editable": true,
+        "type": "Rollershutter",
+        "name": "Shutter_GF_Toilet",
+        "label": "Toilet Shutters",
+        "tags": [
+            "Blinds"
+        ],
+        "groupNames": [
+            "GF_Toilet",
+            "Shutters"
+        ]
+    },
+    {
+        "members": [],
+        "groupType": "Switch",
+        "function": {
+            "name": "EQUALITY"
+        },
+        "link": "https://demo.openhab.org/rest/items/Lights",
+        "state": "UNDEF",
+        "stateDescription": {
+            "pattern": "(%d)",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "Group",
+        "name": "Lights",
+        "label": "All Lights",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Presence",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Presence",
+        "label": "Presence",
+        "category": "presence",
+        "tags": [
+            "Status",
+            "Presence"
+        ],
+        "groupNames": []
+    },
+    {
+        "members": [],
+        "link": "https://demo.openhab.org/rest/items/FF_Bed",
+        "state": "NULL",
+        "editable": true,
+        "type": "Group",
+        "name": "FF_Bed",
+        "label": "Bedroom",
+        "category": "bedroom",
+        "tags": [
+            "Bedroom"
+        ],
+        "groupNames": [
+            "gFF"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_FF_Bath",
+        "state": "22.5 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_FF_Bath",
+        "label": "Bath Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "FF_Bath"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Light_GF_Corridor_Ceiling",
+        "state": "OFF",
+        "editable": true,
+        "type": "Switch",
+        "name": "Light_GF_Corridor_Ceiling",
+        "label": "Downstairs Corridor Lights",
+        "tags": [
+            "Switch",
+            "Light"
+        ],
+        "groupNames": [
+            "GF_Corridor",
+            "Lights"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/NewItem",
+        "state": "NULL",
+        "editable": true,
+        "type": "String",
+        "name": "NewItem",
+        "label": "New Item",
+        "category": "",
+        "tags": [],
+        "groupNames": []
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Temperature_FF_Office",
+        "state": "22 °C",
+        "editable": true,
+        "type": "Number:Temperature",
+        "name": "Temperature_FF_Office",
+        "label": "Office Temperature",
+        "category": "temperature",
+        "tags": [
+            "Measurement",
+            "Temperature"
+        ],
+        "groupNames": [
+            "Temperature",
+            "FF_Office"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/CurrentDate",
+        "state": "NULL",
+        "stateDescription": {
+            "pattern": "%1$tA, %1$td.%1$tm.%1$tY",
+            "readOnly": false,
+            "options": []
+        },
+        "editable": true,
+        "type": "DateTime",
+        "name": "CurrentDate",
+        "label": "Date",
+        "category": "calendar",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "DemoItems"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Heating_GF_Kitchen",
+        "state": "ON",
+        "editable": true,
+        "type": "Switch",
+        "name": "Heating_GF_Kitchen",
+        "label": "Kitchen Heating",
+        "category": "heating",
+        "tags": [
+            "HVAC"
+        ],
+        "groupNames": [
+            "GF_Kitchen",
+            "Heating"
+        ]
+    },
+    {
+        "link": "https://demo.openhab.org/rest/items/Moon_Elevation",
+        "state": "-18.34206045360547 °",
+        "stateDescription": {
+            "pattern": "%.2f %unit%",
+            "readOnly": true,
+            "options": []
+        },
+        "editable": true,
+        "type": "Number:Angle",
+        "name": "Moon_Elevation",
+        "label": "Moon Elevation",
+        "category": "moon",
+        "tags": [
+            "Point"
+        ],
+        "groupNames": [
+            "Moon"
+        ]
+    }
+]

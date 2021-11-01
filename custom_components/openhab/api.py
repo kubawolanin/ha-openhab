@@ -16,60 +16,39 @@ class ApiClientException(Exception):
     """Api Client Exception."""
 
 
-class OpenHabApiClient:
+class OpenHABApiClient:
     def __init__(
         self,
+        hass,
         base_url: str,
         username: str,
         password: str,
-        session: aiohttp.ClientSession,
+        # session: aiohttp.ClientSession,
     ) -> None:
-        """Sample API Client."""
+        """openHAB API Client."""
+        self.hass = hass
         self._base_url = base_url
+        self._rest_url = f"{base_url}/rest"
         self._username = username
         self._password = password
-        self._session = session
-        self._openhab = OpenHAB(base_url)
+        # self._session = session
+        self._openhab = OpenHAB(self._rest_url)
 
-    async def async_get_data(self) -> dict[str, Any]:
+    async def async_get_version(self) -> dict[str, Any]:
         """Get all items from the API."""
-        return await self._openhab.fetch_all_items()
+        info = await self.hass.async_add_executor_job(self._openhab.req_get("/"))
+        runtime_info = info["runtimeInfo"]
+        return f"{runtime_info['version']} {runtime_info['buildString']}"
 
-    async def async_set_title(self, value: str) -> None:
-        """Get data from the API."""
-        url = "https://jsonplaceholder.typicode.com/posts/1"
-        await self.api_wrapper("patch", url, data={"title": value}, headers=API_HEADERS)
+    async def async_get_items(self) -> dict[str, Any]:
+        """Get all items from the API."""
+        return await self.hass.async_add_executor_job(self._openhab.fetch_all_items)
 
-    async def api_wrapper(
-        self,
-        method: str,
-        url: str,
-        data: dict[str, Any] = {},
-        headers: dict = {},
-    ) -> dict[str, Any] | None:
-        """Get information from the API."""
-        try:
-            async with async_timeout.timeout(10, loop=asyncio.get_event_loop()):
-                response = await self._session.request(
-                    method=method, url=url, headers=headers, json=data
-                )
-                if method == "get":
-                    return await response.json()
+    async def async_get_item(self, item_name: str) -> dict[str, Any]:
+        """Get item from the API."""
+        return await self.hass.async_add_executor_job(self._openhab.get_item, item_name)
 
-        except asyncio.TimeoutError as exception:
-            raise ApiClientException(
-                f"Timeout error fetching information from {url}"
-            ) from exception
-
-        except (KeyError, TypeError) as exception:
-            raise ApiClientException(
-                f"Error parsing information from {url} - {exception}"
-            ) from exception
-
-        except (aiohttp.ClientError, socket.gaierror) as exception:
-            raise ApiClientException(
-                f"Error fetching information from {url} - {exception}"
-            ) from exception
-
-        except Exception as exception:  # pylint: disable=broad-except
-            raise ApiClientException(exception) from exception
+    async def async_set_state(self, item_name: str, command: str) -> None:
+        """Set Item state"""
+        item = await self.hass.async_add_executor_job(self.async_get_item, item_name)
+        await item.command(command)

@@ -5,6 +5,7 @@
                 "title": "openHAB",
                 "description": "If you need help with the configuration have a look here: https://github.com/kubawolanin/ha-openhab",
                 "data": {
+                    "base_url": "Base URL",
                     "username": "Username",
                     "password": "Password"
                 }

@@ -7,9 +7,9 @@ NAME = "openHAB"
 DOMAIN = "openhab"
 DOMAIN_DATA = f"{DOMAIN}_data"
 VERSION = "0.0.1"
-ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
+ATTRIBUTION = "Data provided by openHAB REST API"
 ISSUE_URL = "https://github.com/kubawolanin/ha-openhab/issues"
-DATA_COORDINATOR_UPDATE_INTERVAL = timedelta(seconds=30)
+DATA_COORDINATOR_UPDATE_INTERVAL = timedelta(seconds=15)
 LOGGER: Logger = getLogger(__package__)
 
 # Icons
@@ -27,12 +27,27 @@ PLATFORMS = [BINARY_SENSOR, SENSOR, SWITCH]
 
 # Configuration and options
 CONF_ENABLED = "enabled"
+CONF_BASE_URL = "base_url"
 CONF_USERNAME = "username"
 CONF_PASSWORD = "password"
 
 # Defaults
 DEFAULT_NAME = DOMAIN
 
+ITEMS_MAP = {
+    "Color": "light",
+    "Dimmer": "light",
+    "Contact": "binary_sensor",
+    "DateTime": "sensor",
+    "Number": "sensor",
+    "String": "sensor",
+    "Switch": "switch",
+    # "Group": "",
+    "Image": "camera",
+    "Location": "zone",
+    "Player": "media_player",
+    "Rollershutter": "cover",
+}
 
 STARTUP_MESSAGE = f"""
 -------------------------------------------------------------------
