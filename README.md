@@ -9,17 +9,25 @@
 [![Discord][discord-shield]][discord]
 [![Community Forum][forum-shield]][forum]
 
-_Component to integrate with [openhab][openhab]._
+_Component to integrate with [openHAB][openhab]._
 
 **This component will set up the following platforms.**
 
-| Platform        | Description                         |
-| --------------- | ----------------------------------- |
-| `binary_sensor` | Show something `True` or `False`.   |
-| `sensor`        | Show info from blueprint API.       |
-| `switch`        | Switch something `True` or `False`. |
+| Platform        | Item types                     |
+| --------------- | ------------------------------ |
+| `binary_sensor` | `Contact`                      |
+| `sensor`        | `String`, `Number`, `DateTime` |
+| `switch`        | `Switch`                       |
 
-![example][exampleimg]
+In the future this integration will also support the following platforms:
+
+| Platform       | Item types        |
+| -------------- | ----------------- |
+| `light`        | `Color`, `Dimmer` |
+| `camera`       | `Image`           |
+| `zone`         | `Location`        |
+| `media_player` | `Player`          |
+| `cover`        | `Rollershutter`   |
 
 ## Installation
 
@@ -57,7 +65,7 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 
 ---
 
-[openhab]: https://github.com/kubawolanin/ha-openhab
+[openhab]: https://openhab.org
 [buymecoffee]: https://www.buymeacoffee.com/kubawolanin
 [buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?style=for-the-badge
 [commits-shield]: https://img.shields.io/github/commit-activity/y/kubawolanin/blueprint.svg?style=for-the-badge
