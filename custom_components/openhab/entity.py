@@ -3,12 +3,12 @@ from __future__ import annotations
 
 from typing import Any
 
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-from homeassistant.core import HomeAssistant
 
+from .const import ATTRIBUTION, DOMAIN, NAME, VERSION
 from .coordinator import OpenHABDataUpdateCoordinator
-from .const import ATTRIBUTION, CONF_BASE_URL, DOMAIN, NAME, VERSION, LOGGER
 from .icons_map import ICONS_MAP, ITEM_TYPE_MAP
 from .utils import strip_ip
 

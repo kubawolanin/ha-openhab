@@ -1,8 +1,9 @@
 """Data update coordinator for integration blueprint."""
 from __future__ import annotations
-from typing import Any
-from homeassistant.config_entries import ConfigEntry
 
+from typing import Any
+
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 

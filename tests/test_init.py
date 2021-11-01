@@ -25,7 +25,7 @@ async def test_setup_unload_and_reload_entry(hass, bypass_get_data):
     config_entry = MockConfigEntry(domain=DOMAIN, data=MOCK_CONFIG, entry_id="test")
 
     # Set up the entry and assert that the values set during setup are where we expect
-    # them to be. Because we have patched the OpenHABDataUpdateCoordinator.async_get_data
+    # them to be. Because we have patched the OpenHABDataUpdateCoordinator.async_get_items
     # call, no code from custom_components/openhab/api.py actually runs.
     assert await async_setup_entry(hass, config_entry)
     assert DOMAIN in hass.data and config_entry.entry_id in hass.data[DOMAIN]

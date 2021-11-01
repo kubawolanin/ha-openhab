@@ -1,11 +1,9 @@
 """Adds config flow for openHAB."""
 from __future__ import annotations
 
-import voluptuous as vol
-
 from homeassistant import config_entries
 from homeassistant.core import callback
-from homeassistant.helpers.aiohttp_client import async_create_clientsession
+import voluptuous as vol
 
 from .api import OpenHABApiClient
 from .const import CONF_BASE_URL, CONF_PASSWORD, CONF_USERNAME, DOMAIN, PLATFORMS
@@ -29,16 +27,16 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         #     return self.async_abort(reason="single_instance_allowed")
 
         if user_input is not None:
-            # if await self._test_credentials(
-            #     user_input[CONF_BASE_URL],
-            #     user_input[CONF_USERNAME],
-            #     user_input[CONF_PASSWORD],
-            # ):
-            return self.async_create_entry(
-                title=strip_ip(user_input[CONF_BASE_URL]), data=user_input
-            )
-            # else:
-            #     errors["base"] = "auth"
+            if await self._test_credentials(
+                user_input[CONF_BASE_URL],
+                user_input[CONF_USERNAME],
+                user_input[CONF_PASSWORD],
+            ):
+                return self.async_create_entry(
+                    title=strip_ip(user_input[CONF_BASE_URL]), data=user_input
+                )
+            else:
+                errors["base"] = "auth"
 
         if user_input is None:
             user_input = {}

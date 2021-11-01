@@ -1,12 +1,9 @@
 """Sample API Client."""
 from __future__ import annotations
 
-import asyncio
-import socket
 from typing import Any
 
 import aiohttp
-import async_timeout
 from openhab import OpenHAB
 
 API_HEADERS = {aiohttp.hdrs.CONTENT_TYPE: "application/json; charset=UTF-8"}
@@ -34,7 +31,7 @@ class OpenHABApiClient:
         # self._session = session
         self._openhab = OpenHAB(self._rest_url)
 
-    async def async_get_version(self) -> dict[str, Any]:
+    async def async_get_version(self) -> str:
         """Get all items from the API."""
         info = await self.hass.async_add_executor_job(self._openhab.req_get("/"))
         runtime_info = info["runtimeInfo"]

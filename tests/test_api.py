@@ -1,15 +1,12 @@
 """Tests for openhab api."""
-import pytest
 import asyncio
 
 import aiohttp
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+import pytest
 from pytest_homeassistant_custom_component.common import load_fixture
 
-from custom_components.openhab.api import (
-    ApiClientException,
-    OpenHABApiClient,
-)
+from custom_components.openhab.api import ApiClientException, OpenHABApiClient
 
 
 async def test_api(hass, aioclient_mock):
@@ -21,7 +18,7 @@ async def test_api(hass, aioclient_mock):
     # Use aioclient_mock which is provided by `pytest_homeassistant_custom_components`
     # to mock responses to aiohttp requests. In this case we are telling the mock to
     # return {"test": "test"} when a `GET` call is made to the specified URL. We then
-    # call `async_get_data` which will make that `GET` request.
+    # call `async_get_items` which will make that `GET` request.
     aioclient_mock.get(
         "http://openhab:8080/rest/items", json=load_fixture("items.json")
     )

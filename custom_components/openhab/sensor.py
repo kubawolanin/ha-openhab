@@ -1,13 +1,11 @@
 """Sensor platform for openhab."""
-import asyncio
-
+from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.components.sensor import SensorEntity
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 
-from .const import DEFAULT_NAME, DOMAIN, ICON, SENSOR, LOGGER
+from .const import DOMAIN
 from .entity import OpenHABEntity
 
 
