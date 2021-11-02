@@ -41,6 +41,8 @@ class OpenHABEntity(CoordinatorEntity):
         self._base_url = self.coordinator.api._base_url
         self._host = strip_ip(self._base_url)
 
+        self.entity_id = f"{DOMAIN}_{self._host}_{self.item.name}"
+
     @property
     def name(self) -> str:
         """Return the name of the switch."""
@@ -49,8 +51,7 @@ class OpenHABEntity(CoordinatorEntity):
     @property
     def unique_id(self) -> str | None:
         """Return a unique ID to use for this entity."""
-        name = self.item.name
-        return f"{DOMAIN}_{self._host}_{name}"
+        return f"{DOMAIN}_{self._host}_{self.item.name}"
 
     @property
     def device_info(self) -> DeviceInfo:
@@ -122,3 +123,4 @@ class OpenHABEntity(CoordinatorEntity):
         """Handle updated data from the coordinator."""
         self.item = self.coordinator.data.get(self._id)
         self.async_write_ha_state()
+6
