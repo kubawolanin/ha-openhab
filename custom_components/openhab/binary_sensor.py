@@ -4,6 +4,8 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from .device_classes_map import BINARY_SENSOR_DEVICE_CLASS_MAP
+
 from .const import DOMAIN
 from .entity import OpenHABEntity
 
@@ -24,6 +26,8 @@ async def async_setup_entry(
 
 class OpenHABBinarySensor(OpenHABEntity, BinarySensorEntity):
     """openhab binary_sensor class."""
+
+    _attr_device_class_map = BINARY_SENSOR_DEVICE_CLASS_MAP
 
     @property
     def is_on(self) -> bool:

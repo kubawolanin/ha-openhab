@@ -20,6 +20,7 @@ class OpenHABDataUpdateCoordinator(DataUpdateCoordinator):
         """Initialize."""
         self.api = api
         self.platforms: list[str] = []
+        self.version = str
 
         super().__init__(
             hass,
@@ -31,6 +32,7 @@ class OpenHABDataUpdateCoordinator(DataUpdateCoordinator):
     async def _async_update_data(self) -> dict[str, Any]:
         """Update data via library."""
         try:
+            self.version = await self.api.async_get_version()
             return await self.api.async_get_items()
         except ApiClientException as exception:
             raise UpdateFailed(exception) from exception

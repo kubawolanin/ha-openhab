@@ -7,6 +7,7 @@ from homeassistant.helpers.typing import StateType
 
 from .const import DOMAIN
 from .entity import OpenHABEntity
+from .device_classes_map import SENSOR_DEVICE_CLASS_MAP
 
 
 async def async_setup_entry(
@@ -27,8 +28,7 @@ async def async_setup_entry(
 class OpenHABSensor(OpenHABEntity, SensorEntity):
     """openhab Sensor class."""
 
-    # _attr_name = f"{DEFAULT_NAME}_{SENSOR}"
-    # _attr_icon = ICON
+    _attr_device_class_map = SENSOR_DEVICE_CLASS_MAP
 
     @property
     def state(self) -> StateType:

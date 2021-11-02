@@ -69,7 +69,7 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         try:
             # session = async_create_clientsession(self.hass)
             client = OpenHABApiClient(self.hass, base_url, username, password)
-            await self.hass.async_add_executor_job(client.async_get_version())
+            await client.async_get_version()
             return True
         except Exception:  # pylint: disable=broad-except
             pass

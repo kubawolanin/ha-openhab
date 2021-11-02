@@ -1,3 +1,5 @@
+"""Map openHAB classic iconset and Item types to MDI"""
+
 ICONS_MAP = {
     "alarm": "mdi:alarm-light",
     "attic": "mdi:stairs",

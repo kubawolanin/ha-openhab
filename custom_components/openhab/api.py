@@ -33,7 +33,7 @@ class OpenHABApiClient:
 
     async def async_get_version(self) -> str:
         """Get all items from the API."""
-        info = await self.hass.async_add_executor_job(self._openhab.req_get("/"))
+        info = await self.hass.async_add_executor_job(self._openhab.req_get, "/")
         runtime_info = info["runtimeInfo"]
         return f"{runtime_info['version']} {runtime_info['buildString']}"
 

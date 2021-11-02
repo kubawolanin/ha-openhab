@@ -9,6 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DOMAIN
+from .device_classes_map import SWITCH_DEVICE_CLASS_MAP
 from .entity import OpenHABEntity
 
 
@@ -28,6 +29,8 @@ async def async_setup_entry(
 
 class OpenHABBinarySwitch(OpenHABEntity, SwitchEntity):
     """openhab switch class."""
+
+    _attr_device_class_map = SWITCH_DEVICE_CLASS_MAP
 
     async def async_turn_on(self, **kwargs: dict[str, Any]) -> None:
         """Turn on the switch."""
