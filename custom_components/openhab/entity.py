@@ -114,6 +114,7 @@ class OpenHABEntity(CoordinatorEntity):
             "tags": self.item.tags,
             "is_group": self.item.group,
             "group_names": self.item.groupNames,
+            "tags": self.item.tags,
             "members": self.item.members,
             "hostname": self._host,
         }
@@ -123,4 +124,6 @@ class OpenHABEntity(CoordinatorEntity):
         """Handle updated data from the coordinator."""
         self.item = self.coordinator.data.get(self._id)
         self.async_write_ha_state()
+
+
 6

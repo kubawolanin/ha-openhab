@@ -12,17 +12,12 @@ ISSUE_URL = "https://github.com/kubawolanin/ha-openhab/issues"
 DATA_COORDINATOR_UPDATE_INTERVAL = timedelta(seconds=15)
 LOGGER: Logger = getLogger(__package__)
 
-# Icons
-ICON = "mdi:format-quote-close"
-
-# Device classes
-BINARY_SENSOR_DEVICE_CLASS = "connectivity"
-
 # Platforms
 BINARY_SENSOR = "binary_sensor"
 SENSOR = "sensor"
 SWITCH = "switch"
-PLATFORMS = [BINARY_SENSOR, SENSOR, SWITCH]
+COVER = "cover"
+PLATFORMS = [BINARY_SENSOR, COVER, SENSOR, SWITCH]
 
 
 # Configuration and options

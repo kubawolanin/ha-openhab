@@ -18,9 +18,8 @@ class OpenHABApiClient:
         self,
         hass,
         base_url: str,
-        username: str,
-        password: str,
-        # session: aiohttp.ClientSession,
+        username: str | None,
+        password: str | None,
     ) -> None:
         """openHAB API Client."""
         self.hass = hass
@@ -28,8 +27,10 @@ class OpenHABApiClient:
         self._rest_url = f"{base_url}/rest"
         self._username = username
         self._password = password
-        # self._session = session
-        self._openhab = OpenHAB(self._rest_url)
+        if len(username) > 0:
+            self._openhab = OpenHAB(self._rest_url, self._username, self._password)
+        else:
+            self._openhab = OpenHAB(self._rest_url)
 
     async def async_get_version(self) -> str:
         """Get all items from the API."""
