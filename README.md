@@ -11,6 +11,8 @@
 
 _Component to integrate with [openHAB][openhab]._
 
+**This is a Work in Progress repo!**
+
 **This component will set up the following platforms.**
 
 | Platform        | Item types                     |
