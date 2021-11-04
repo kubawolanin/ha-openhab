@@ -14,10 +14,14 @@ LOGGER: Logger = getLogger(__package__)
 
 # Platforms
 BINARY_SENSOR = "binary_sensor"
+CAMERA = "camera"
+COVER = "cover"
+DEVICE_TRACKER = "device_tracker"
+LIGHT = "light"
+MEDIA_PLAYER = "media_player"
 SENSOR = "sensor"
 SWITCH = "switch"
-COVER = "cover"
-PLATFORMS = [BINARY_SENSOR, COVER, SENSOR, SWITCH]
+PLATFORMS = [BINARY_SENSOR, COVER, DEVICE_TRACKER, SENSOR, SWITCH]
 
 
 # Configuration and options
@@ -30,18 +34,25 @@ CONF_PASSWORD = "password"
 DEFAULT_NAME = DOMAIN
 
 ITEMS_MAP = {
-    "Color": "light",
-    "Dimmer": "light",
-    "Contact": "binary_sensor",
-    "DateTime": "sensor",
-    "Number": "sensor",
-    "String": "sensor",
-    "Switch": "switch",
-    # "Group": "",
-    "Image": "camera",
-    "Location": "zone",
-    "Player": "media_player",
-    "Rollershutter": "cover",
+    BINARY_SENSOR: ["Contact"],
+    CAMERA: ["Image"],
+    COVER: ["Rollershutter"],
+    DEVICE_TRACKER: ["Location"],
+    LIGHT: ["Color", "Dimmer"],
+    MEDIA_PLAYER: ["Player"],
+    SENSOR: [
+        "DateTime",
+        "Number",
+        "Number:Length",
+        "Number:Temperature",
+        "Number:Pressure",
+        "Number:Speed",
+        "Number:Intensity",
+        "Number:Dimensionless",
+        "Number:Angle",
+        "String",
+    ],
+    SWITCH: ["Switch"],
 }
 
 STARTUP_MESSAGE = f"""

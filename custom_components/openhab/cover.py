@@ -1,11 +1,11 @@
-"""Sensor platform for openhab."""
+"""Cover platform for openhab."""
 from homeassistant.components.cover import ATTR_POSITION, CoverEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 
-from .const import DOMAIN
+from .const import DOMAIN, COVER, ITEMS_MAP
 from .entity import OpenHABEntity
 from .device_classes_map import COVER_DEVICE_CLASS_MAP
 
@@ -15,15 +15,15 @@ from typing import Any, cast
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: ConfigEntry,
-    async_add_entities: AddEntitiesCallback,
+    async_add_devices: AddEntitiesCallback,
 ) -> None:
     """Setup sensor platform."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
 
-    async_add_entities(
-        OpenHABCover(hass=hass, coordinator=coordinator, item=item)
+    async_add_devices(
+        OpenHABCover(hass, coordinator, item)
         for item in coordinator.data.values()
-        if item.type_ == "Rollershutter"
+        if item.type_ in ITEMS_MAP[COVER]
     )
 
 
@@ -41,31 +41,31 @@ class OpenHABCover(OpenHABEntity, CoverEntity):
             return None
         return 100 - cast(int, self.item._state)
 
-    async def async_set_cover_position(self, **kwargs: Any) -> None:
+    def set_cover_position(self, **kwargs: dict[str, Any]) -> None:
         """Move the cover to a specific position."""
         if not self.item:
             return
-        await self.hass.async_add_executor_job(
-            self.item.command, int(kwargs[ATTR_POSITION])
+        self.coordinator.api.openhab.req_post(
+            f"/items/{self._id}", data=int(kwargs[ATTR_POSITION])
         )
 
-    async def async_open_cover(self, **kwargs: Any) -> None:
+    def open_cover(self, **kwargs: dict[str, Any]) -> None:
         """Open the cover."""
         if not self.item:
             return
-        await self.hass.async_add_executor_job(self.item.up)
+        self.coordinator.api.openhab.req_post(f"/items/{self._id}", data="UP")
 
-    async def async_close_cover(self, **kwargs: Any) -> None:
+    def close_cover(self, **kwargs: dict[str, Any]) -> None:
         """Close cover."""
         if not self.item:
             return
-        await self.hass.async_add_executor_job(self.item.down)
+        self.coordinator.api.openhab.req_post(f"/items/{self._id}", data="DOWN")
 
-    async def async_stop_cover(self, **kwargs: Any) -> None:
+    def stop_cover(self, **kwargs: dict[str, Any]) -> None:
         """Close cover."""
         if not self.item:
             return
-        await self.hass.async_add_executor_job(self.item.stop)
+        self.coordinator.api.openhab.req_post(f"/items/{self._id}", data="STOP")
 
     @property
     def is_closed(self) -> bool:

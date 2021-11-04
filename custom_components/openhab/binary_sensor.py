@@ -6,7 +6,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .device_classes_map import BINARY_SENSOR_DEVICE_CLASS_MAP
 
-from .const import DOMAIN
+from .const import DOMAIN, BINARY_SENSOR, ITEMS_MAP
 from .entity import OpenHABEntity
 
 
@@ -20,7 +20,7 @@ async def async_setup_entry(
     async_add_devices(
         OpenHABBinarySensor(hass, coordinator, item)
         for item in coordinator.data.values()
-        if item.type_ == "Contact"
+        if item.type_ in ITEMS_MAP[BINARY_SENSOR]
     )
 
 

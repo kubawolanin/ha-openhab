@@ -21,6 +21,7 @@ class OpenHABDataUpdateCoordinator(DataUpdateCoordinator):
         self.api = api
         self.platforms: list[str] = []
         self.version: str = ""
+        self.is_online = False
 
         super().__init__(
             hass,
@@ -34,6 +35,10 @@ class OpenHABDataUpdateCoordinator(DataUpdateCoordinator):
         try:
             if self.version is None or len(self.version) == 0:
                 self.version = await self.api.async_get_version()
-            return await self.api.async_get_items()
+
+            items = await self.api.async_get_items()
+            self.is_online = bool(items)
+            return items
+
         except ApiClientException as exception:
             raise UpdateFailed(exception) from exception

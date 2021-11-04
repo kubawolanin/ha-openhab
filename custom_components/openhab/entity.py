@@ -3,14 +3,13 @@ from __future__ import annotations
 
 from typing import Any, List
 
-from homeassistant.const import (
-    ATTR_FRIENDLY_NAME,
-)
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import ATTRIBUTION, DOMAIN, NAME, VERSION
+from openhab import items
+
+from .const import ATTRIBUTION, DOMAIN, NAME, VERSION, LOGGER
 from .coordinator import OpenHABDataUpdateCoordinator
 from .icons_map import ICONS_MAP, ITEM_TYPE_MAP
 from .utils import strip_ip
@@ -26,7 +25,7 @@ class OpenHABEntity(CoordinatorEntity):
         self,
         hass: HomeAssistant,
         coordinator: OpenHABDataUpdateCoordinator,
-        item: Any,
+        item: items.Item,
     ) -> None:
         """Initialize the switch."""
         super().__init__(coordinator)
@@ -42,6 +41,11 @@ class OpenHABEntity(CoordinatorEntity):
         self._host = strip_ip(self._base_url)
 
         self.entity_id = f"{DOMAIN}_{self._host}_{self.item.name}"
+
+    @property
+    def available(self):
+        """Return True if entity is available."""
+        return self.coordinator.is_online
 
     @property
     def name(self) -> str:
@@ -99,31 +103,34 @@ class OpenHABEntity(CoordinatorEntity):
         name = self.item.name
         label = self.item.label
         link = f"{self._base_url}/rest/items/{name}"
-        friendly_name = label if len(label) > 0 else name
-        return {
-            ATTR_FRIENDLY_NAME: friendly_name,
+        is_group = bool(self.item.group)
+        attributes = {
             "attribution": ATTRIBUTION,
+            "category": self.item.category,
+            "editable": self.item.editable,
+            "group_names": self.item.groupNames,
+            "hostname": self._host,
             "id": f"{DOMAIN}_{name}",
             "integration": DOMAIN,
-            "link": link,
-            "editable": self.item.editable,
-            "type": self.item.type_,
-            "name": self.item.name,
-            "label": self.item.label,
-            "category": self.item.category,
-            "tags": self.item.tags,
             "is_group": self.item.group,
-            "group_names": self.item.groupNames,
+            "label": label,
+            "link": link,
+            "name": self.item.name,
             "tags": self.item.tags,
-            "members": self.item.members,
-            "hostname": self._host,
+            "type": self.item.type_,
+            "raw_state": self.item._raw_state,
         }
+
+        if is_group and len(self.item.members):
+            attributes["members"] = self.item.members.keys()
+
+        if self.item.quantityType is not None:
+            attributes["quantity_type"] = self.item.quantityType
+
+        return attributes
 
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
         self.item = self.coordinator.data.get(self._id)
         self.async_write_ha_state()
-
-
-6

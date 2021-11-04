@@ -5,7 +5,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 
-from .const import DOMAIN
+from .const import DOMAIN, SENSOR, ITEMS_MAP
 from .entity import OpenHABEntity
 from .device_classes_map import SENSOR_DEVICE_CLASS_MAP
 
@@ -19,9 +19,9 @@ async def async_setup_entry(
     coordinator = hass.data[DOMAIN][entry.entry_id]
 
     async_add_entities(
-        OpenHABSensor(hass=hass, coordinator=coordinator, item=item)
+        OpenHABSensor(hass, coordinator, item)
         for item in coordinator.data.values()
-        if item.type_ == "String" or item.type_ == "Number" or item.type_ == "DateTime"
+        if item.type_ in ITEMS_MAP[SENSOR]
     )
 
 
