@@ -1,15 +1,14 @@
 """Cover platform for openhab."""
+from typing import Any, cast
+
 from homeassistant.components.cover import ATTR_POSITION, CoverEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import StateType
 
-from .const import DOMAIN, COVER, ITEMS_MAP
-from .entity import OpenHABEntity
+from .const import COVER, DOMAIN, ITEMS_MAP
 from .device_classes_map import COVER_DEVICE_CLASS_MAP
-
-from typing import Any, cast
+from .entity import OpenHABEntity
 
 
 async def async_setup_entry(

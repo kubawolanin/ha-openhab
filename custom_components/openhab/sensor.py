@@ -5,9 +5,9 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 
-from .const import DOMAIN, SENSOR, ITEMS_MAP
-from .entity import OpenHABEntity
+from .const import DOMAIN, ITEMS_MAP, SENSOR
 from .device_classes_map import SENSOR_DEVICE_CLASS_MAP
+from .entity import OpenHABEntity
 
 
 async def async_setup_entry(

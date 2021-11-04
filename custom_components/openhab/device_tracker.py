@@ -4,11 +4,10 @@ from homeassistant.components.device_tracker.config_entry import TrackerEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import StateType
 
-from .const import DOMAIN, DEVICE_TRACKER, ITEMS_MAP
-from .entity import OpenHABEntity
+from .const import DEVICE_TRACKER, DOMAIN, ITEMS_MAP
 from .device_classes_map import SENSOR_DEVICE_CLASS_MAP
+from .entity import OpenHABEntity
 
 
 async def async_setup_entry(

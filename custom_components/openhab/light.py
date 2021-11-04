@@ -1,4 +1,6 @@
 """Light platform for openhab."""
+from typing import Any, cast
+
 from homeassistant.components.light import (
     ATTR_BRIGHTNESS,
     ATTR_COLOR_TEMP,
@@ -16,11 +18,9 @@ from homeassistant.util.color import (
     color_temperature_mired_to_kelvin as mired_to_kelvin,
 )
 
-from .const import DOMAIN, LIGHT, ITEMS_MAP
-from .entity import OpenHABEntity
+from .const import DOMAIN, ITEMS_MAP, LIGHT
 from .device_classes_map import COVER_DEVICE_CLASS_MAP
-
-from typing import Any, cast
+from .entity import OpenHABEntity
 
 
 async def async_setup_entry(

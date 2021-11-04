@@ -4,9 +4,8 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
+from .const import BINARY_SENSOR, DOMAIN, ITEMS_MAP
 from .device_classes_map import BINARY_SENSOR_DEVICE_CLASS_MAP
-
-from .const import DOMAIN, BINARY_SENSOR, ITEMS_MAP
 from .entity import OpenHABEntity
 
 

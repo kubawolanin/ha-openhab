@@ -6,10 +6,9 @@ from typing import Any, List
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-
 from openhab import items
 
-from .const import ATTRIBUTION, DOMAIN, NAME, VERSION, LOGGER
+from .const import ATTRIBUTION, DOMAIN, NAME, VERSION
 from .coordinator import OpenHABDataUpdateCoordinator
 from .icons_map import ICONS_MAP, ITEM_TYPE_MAP
 from .utils import strip_ip
