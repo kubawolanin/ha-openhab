@@ -15,11 +15,13 @@ _Component to integrate with [openHAB][openhab]._
 
 **This component will set up the following platforms.**
 
-| Platform        | Item types                     |
-| --------------- | ------------------------------ |
-| `binary_sensor` | `Contact`                      |
-| `sensor`        | `String`, `Number`, `DateTime` |
-| `switch`        | `Switch`                       |
+| Platform         | Item types                     |
+| ---------------- | ------------------------------ |
+| `binary_sensor`  | `Contact`                      |
+| `sensor`         | `String`, `Number`, `DateTime` |
+| `switch`         | `Switch`                       |
+| `cover`          | `Rollershutter`                |
+| `device_tracker` | `Location`                     |
 
 In the future this integration will also support the following platforms:
 
@@ -27,9 +29,7 @@ In the future this integration will also support the following platforms:
 | -------------- | ----------------- |
 | `light`        | `Color`, `Dimmer` |
 | `camera`       | `Image`           |
-| `zone`         | `Location`        |
 | `media_player` | `Player`          |
-| `cover`        | `Rollershutter`   |
 
 ## Installation
 
