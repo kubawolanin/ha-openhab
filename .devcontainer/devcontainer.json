@@ -8,11 +8,11 @@
 	],
 	"postCreateCommand": "container install",
 	"extensions": [
+		// "k--kato.intellij-idea-keybindings",
 		"ms-python.python",
 		"github.vscode-pull-request-github",
 		"ryanluker.vscode-coverage-gutters",
-		"ms-python.vscode-pylance",
-		"k--kato.intellij-idea-keybindings"
+		"ms-python.vscode-pylance"
 	],
 	"settings": {
 		"files.eol": "\n",
