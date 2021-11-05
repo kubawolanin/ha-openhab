@@ -14,6 +14,8 @@ class ApiClientException(Exception):
 
 
 class OpenHABApiClient:
+    """API Client"""
+
     def __init__(
         self,
         hass,

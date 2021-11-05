@@ -9,7 +9,7 @@
 [![Discord][discord-shield]][discord]
 [![Community Forum][forum-shield]][forum]
 
-_Component to integrate with [openHAB][openhab]._
+_Component to integrate with [openHAB][openHAB]._
 
 **This is a Work in Progress repo!**
 

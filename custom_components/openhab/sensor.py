@@ -1,4 +1,4 @@
-"""Sensor platform for openhab."""
+"""Sensor platform for openHAB."""
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -26,7 +26,7 @@ async def async_setup_entry(
 
 
 class OpenHABSensor(OpenHABEntity, SensorEntity):
-    """openhab Sensor class."""
+    """openHAB Sensor class."""
 
     _attr_device_class_map = SENSOR_DEVICE_CLASS_MAP
 

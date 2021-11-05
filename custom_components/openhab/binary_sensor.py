@@ -1,4 +1,4 @@
-"""Binary sensor platform for openhab."""
+"""Binary sensor platform for openHAB."""
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -24,7 +24,7 @@ async def async_setup_entry(
 
 
 class OpenHABBinarySensor(OpenHABEntity, BinarySensorEntity):
-    """openhab binary_sensor class."""
+    """openHAB binary_sensor class."""
 
     _attr_device_class_map = BINARY_SENSOR_DEVICE_CLASS_MAP
 

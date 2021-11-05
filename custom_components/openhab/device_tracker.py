@@ -1,4 +1,4 @@
-"""Device Tracker platform for openhab."""
+"""Device Tracker platform for openHAB."""
 from homeassistant.components.device_tracker import SOURCE_TYPE_GPS
 from homeassistant.components.device_tracker.config_entry import TrackerEntity
 from homeassistant.config_entries import ConfigEntry
@@ -26,7 +26,7 @@ async def async_setup_entry(
 
 
 class OpenHABTracker(OpenHABEntity, TrackerEntity):
-    """openhab device_tracker class."""
+    """openHAB device_tracker class."""
 
     _attr_device_class_map = SENSOR_DEVICE_CLASS_MAP
 

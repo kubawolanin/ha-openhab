@@ -24,6 +24,7 @@
                 "data": {
                     "binary_sensor": "Binary sensor enabled",
                     "cover": "Cover enabled",
+                    "device_tracker": "Device Tracker enabled",
                     "sensor": "Sensor enabled",
                     "switch": "Switch enabled"
                 }

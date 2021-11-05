@@ -1,26 +1,20 @@
-"""Light platform for openhab."""
+"""Light platform for openHAB."""
 from typing import Any, cast
 
 from homeassistant.components.light import (
     ATTR_BRIGHTNESS,
-    ATTR_COLOR_TEMP,
     PLATFORM_SCHEMA,
-    SUPPORT_BRIGHTNESS,
-    SUPPORT_COLOR_TEMP,
+    COLOR_MODE_BRIGHTNESS,
+    COLOR_MODE_HS,
     LightEntity,
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import StateType
-from homeassistant.util.color import (
-    color_temperature_kelvin_to_mired as kelvin_to_mired,
-    color_temperature_mired_to_kelvin as mired_to_kelvin,
-)
 
 from .const import DOMAIN, ITEMS_MAP, LIGHT
-from .device_classes_map import COVER_DEVICE_CLASS_MAP
 from .entity import OpenHABEntity
+from .utils import str_to_hsv, hsv_to_str
 
 
 async def async_setup_entry(
@@ -32,11 +26,54 @@ async def async_setup_entry(
     coordinator = hass.data[DOMAIN][entry.entry_id]
 
     async_add_devices(
-        OpenHABLight(hass, coordinator, item)
+        OpenHABLightColor(hass, coordinator, item)
         for item in coordinator.data.values()
-        if item.type_ in ITEMS_MAP[LIGHT]
+        if item.type_ == ITEMS_MAP[LIGHT][0]  # Color
     )
+    # async_add_devices(
+    #     OpenHABLightDimmer(hass, coordinator, item)
+    #     for item in coordinator.data.values()
+    #     if item.type_ == ITEMS_MAP[LIGHT][1]  # Dimmer
+    # )
 
 
-class OpenHABLight(OpenHABEntity, LightEntity):
-    """openhab Light class."""
+class OpenHABLightColor(OpenHABEntity, LightEntity):
+    """openHAB Color Light class."""
+
+    @property
+    def is_on(self):
+        """Return true if light is on."""
+        return self.item._state[2] > 0
+
+    def turn_on(self, **kwargs):
+        """Instruct the light to turn on."""
+        if not self.item:
+            return
+        hsv = self.item._state
+        self.coordinator.api.openhab.req_post(
+            f"/items/{self._id}", data=hsv_to_str([hsv[0], hsv[1], 100])
+        )
+
+    def turn_off(self, **kwargs):
+        """Instruct the light to turn off."""
+        if not self.item:
+            return
+        hsv = self.item._state
+        self.coordinator.api.openhab.req_post(
+            f"/items/{self._id}", data=hsv_to_str([hsv[0], hsv[1], 0])
+        )
+
+    # @property
+    # def color_mode(self) -> str | None:
+    #     """Return the color mode of the light."""
+    #     return COLOR_MODE_HS
+
+    @property
+    def hs_color(self) -> tuple[float, float]:
+        """Return the hs color value."""
+        hsv = self.item._state
+        return [hsv[0], hsv[1]]
+
+
+class OpenHABLightDimmer(OpenHABEntity, LightEntity):
+    """openHAB Dimmer Light class."""

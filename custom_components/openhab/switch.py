@@ -1,4 +1,4 @@
-"""Switch platform for openhab."""
+"""Switch platform for openHAB."""
 from __future__ import annotations
 
 from typing import Any
@@ -28,7 +28,7 @@ async def async_setup_entry(
 
 
 class OpenHABBinarySwitch(OpenHABEntity, SwitchEntity):
-    """openhab switch class."""
+    """openHAB switch class."""
 
     _attr_device_class_map = SWITCH_DEVICE_CLASS_MAP
 

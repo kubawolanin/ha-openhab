@@ -1,4 +1,4 @@
-"""Cover platform for openhab."""
+"""Cover platform for openHAB."""
 from typing import Any, cast
 
 from homeassistant.components.cover import ATTR_POSITION, CoverEntity
@@ -27,7 +27,7 @@ async def async_setup_entry(
 
 
 class OpenHABCover(OpenHABEntity, CoverEntity):
-    """openhab Cover class."""
+    """openHAB Cover class."""
 
     _attr_device_class_map = COVER_DEVICE_CLASS_MAP
 
@@ -45,7 +45,7 @@ class OpenHABCover(OpenHABEntity, CoverEntity):
         if not self.item:
             return
         self.coordinator.api.openhab.req_post(
-            f"/items/{self._id}", data=int(kwargs[ATTR_POSITION])
+            f"/items/{self._id}", data=str(kwargs[ATTR_POSITION])
         )
 
     def open_cover(self, **kwargs: dict[str, Any]) -> None:

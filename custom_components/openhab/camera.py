@@ -1,0 +1,1 @@
+"""Camera platform for openHAB."""

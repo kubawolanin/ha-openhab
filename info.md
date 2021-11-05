@@ -8,7 +8,7 @@
 [![Discord][discord-shield]][discord]
 [![Community Forum][forum-shield]][forum]
 
-_Component to integrate with [openhab][openhab]._
+_Component to integrate with [openHAB][openhab]._
 
 **This component will set up the following platforms.**
 
@@ -17,8 +17,6 @@ _Component to integrate with [openhab][openhab]._
 | `binary_sensor` | Show something `True` or `False`.   |
 | `sensor`        | Show info from API.                 |
 | `switch`        | Switch something `True` or `False`. |
-
-![example][exampleimg]
 
 {% if not installed %}
 
@@ -49,7 +47,7 @@ _Component to integrate with [openhab][openhab]._
 [forum]: https://community.home-assistant.io/
 [license]: https://github.com/kubawolanin/ha-openhab/blob/master/LICENSE
 [license-shield]: https://img.shields.io/github/license/kubawolanin/ha-openhab.svg?style=for-the-badge
-[maintenance-shield]: https://img.shields.io/badge/maintainer-Joakim%20Sørensen%20%40kubawolanin-blue.svg?style=for-the-badge
+[maintenance-shield]: https://img.shields.io/badge/maintainer-Kuba%20Wolanin%20%40kubawolanin-blue.svg?style=for-the-badge
 [releases-shield]: https://img.shields.io/github/release/kubawolanin/ha-openhab.svg?style=for-the-badge
 [releases]: https://github.com/kubawolanin/ha-openhab/releases
 [user_profile]: https://github.com/kubawolanin

@@ -33,6 +33,7 @@ class OpenHABEntity(CoordinatorEntity):
         self.hass = hass
         self.item = item
         self._id = item.name
+        self._attr_device_class_map = {}
 
         if not self.coordinator.api:
             self._base_url = ""
@@ -101,7 +102,8 @@ class OpenHABEntity(CoordinatorEntity):
         """Return the state attributes."""
         name = self.item.name
         label = self.item.label
-        link = f"{self._base_url}/rest/items/{name}"
+        api_link = f"{self._base_url}/rest/items/{name}"
+        ui_link = f"{self._base_url}/settings/items/{name}"
         is_group = bool(self.item.group)
         attributes = {
             "attribution": ATTRIBUTION,
@@ -113,7 +115,8 @@ class OpenHABEntity(CoordinatorEntity):
             "integration": DOMAIN,
             "is_group": self.item.group,
             "label": label,
-            "link": link,
+            "api_link": api_link,
+            "main_ui_link": ui_link,
             "name": self.item.name,
             "tags": self.item.tags,
             "type": self.item.type_,

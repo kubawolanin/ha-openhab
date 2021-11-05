@@ -1,4 +1,4 @@
-"""Constants for openhab."""
+"""Constants for openHAB."""
 from datetime import timedelta
 from logging import Logger, getLogger
 
@@ -21,7 +21,7 @@ LIGHT = "light"
 MEDIA_PLAYER = "media_player"
 SENSOR = "sensor"
 SWITCH = "switch"
-PLATFORMS = [BINARY_SENSOR, COVER, DEVICE_TRACKER, SENSOR, SWITCH]
+PLATFORMS = [BINARY_SENSOR, COVER, DEVICE_TRACKER, LIGHT, SENSOR, SWITCH]
 
 
 # Configuration and options

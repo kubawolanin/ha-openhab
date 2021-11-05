@@ -1,1 +1,1 @@
-"""Tests for openhab integration."""
+"""Tests for openHAB integration."""

@@ -1,4 +1,4 @@
-"""Tests for openhab api."""
+"""Tests for openHAB api."""
 import asyncio
 
 import aiohttp
