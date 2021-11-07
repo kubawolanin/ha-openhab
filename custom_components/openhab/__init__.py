@@ -10,6 +10,8 @@ from homeassistant.core import HomeAssistant
 from .api import OpenHABApiClient
 from .const import (
     CONF_BASE_URL,
+    CONF_AUTH_TYPE,
+    CONF_AUTH_TOKEN,
     CONF_PASSWORD,
     CONF_USERNAME,
     DOMAIN,
@@ -31,9 +33,10 @@ async def async_setup_entry(
     api_client = OpenHABApiClient(
         hass=hass,
         base_url=entry.data[CONF_BASE_URL],
-        username=entry.data[CONF_USERNAME],
-        password=entry.data[CONF_PASSWORD],
-        # session=async_get_clientsession(hass),
+        auth_type=entry.data[CONF_AUTH_TYPE],
+        auth_token=entry.data.get(CONF_AUTH_TOKEN, ""),
+        username=entry.data.get(CONF_USERNAME, ""),
+        password=entry.data.get(CONF_PASSWORD, ""),
     )
 
     coordinator = OpenHABDataUpdateCoordinator(hass, api=api_client)

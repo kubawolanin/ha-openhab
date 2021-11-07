@@ -3,10 +3,23 @@ from __future__ import annotations
 
 from homeassistant import config_entries
 from homeassistant.core import callback
+from homeassistant.helpers import config_validation as cv
 import voluptuous as vol
 
 from .api import OpenHABApiClient
-from .const import CONF_BASE_URL, CONF_PASSWORD, CONF_USERNAME, DOMAIN, PLATFORMS
+from .const import (
+    AUTH_TYPES,
+    CONF_BASE_URL,
+    CONF_PASSWORD,
+    CONF_USERNAME,
+    CONF_AUTH_TOKEN,
+    CONF_AUTH_TYPE_BASIC,
+    CONF_AUTH_TYPE,
+    CONF_AUTH_TYPE_TOKEN,
+    DOMAIN,
+    PLATFORMS,
+    LOGGER,
+)
 from .utils import strip_ip
 
 
@@ -14,6 +27,7 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     """Config flow for openHAB."""
 
     VERSION = 1
+    data = None
 
     async def async_step_user(
         self,
@@ -22,15 +36,51 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         """Handle a flow initialized by the user."""
         errors = {}
 
-        # Uncomment the next 2 lines if only a single instance of the integration is allowed:
-        # if self._async_current_entries():
-        #     return self.async_abort(reason="single_instance_allowed")
+        LOGGER.info(user_input)
 
         if user_input is not None:
+            self.data = user_input
+            return await self.async_step_credentials(user_input)
+
+        if user_input is None:
+            user_input = {}
+
+        return self.async_show_form(
+            step_id="user",
+            data_schema=vol.Schema(
+                {
+                    vol.Required(
+                        CONF_BASE_URL,
+                        default=user_input.get(CONF_BASE_URL, "http://"),
+                    ): str,
+                    vol.Required(
+                        CONF_AUTH_TYPE,
+                        default=user_input.get(CONF_AUTH_TYPE, CONF_AUTH_TYPE_TOKEN),
+                    ): vol.In(AUTH_TYPES),
+                }
+            ),
+            errors=errors,
+        )
+
+    async def async_step_credentials(
+        self,
+        user_input: dict[str, str] | None = None,
+    ):
+        """Handle a flow initialized by the user."""
+        errors = {}
+
+        user_input[CONF_BASE_URL] = self.data[CONF_BASE_URL]
+        user_input[CONF_AUTH_TYPE] = self.data[CONF_AUTH_TYPE]
+
+        if user_input is not None and (
+            CONF_AUTH_TOKEN in user_input or CONF_USERNAME in user_input
+        ):
             if await self._test_credentials(
                 user_input[CONF_BASE_URL],
-                user_input[CONF_USERNAME],
-                user_input[CONF_PASSWORD],
+                user_input[CONF_AUTH_TYPE],
+                user_input.get(CONF_AUTH_TOKEN, ""),
+                user_input.get(CONF_USERNAME, ""),
+                user_input.get(CONF_PASSWORD, ""),
             ):
                 return self.async_create_entry(
                     title=strip_ip(user_input[CONF_BASE_URL]), data=user_input
@@ -41,21 +91,25 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is None:
             user_input = {}
 
+        if user_input[CONF_AUTH_TYPE] == CONF_AUTH_TYPE_BASIC:
+            schema = {
+                vol.Optional(
+                    CONF_USERNAME, default=user_input.get(CONF_USERNAME, "")
+                ): cv.string,
+                vol.Optional(
+                    CONF_PASSWORD, default=user_input.get(CONF_PASSWORD, "")
+                ): cv.string,
+            }
+        elif user_input[CONF_AUTH_TYPE] == CONF_AUTH_TYPE_TOKEN:
+            schema = {
+                vol.Required(
+                    CONF_AUTH_TOKEN, default=user_input.get(CONF_AUTH_TOKEN, "")
+                ): cv.string,  # cv.matches_regex(r"^(oh)\.(.+)\.(.+)$"),
+            }
+
         return self.async_show_form(
-            step_id="user",
-            data_schema=vol.Schema(
-                {
-                    vol.Required(
-                        CONF_BASE_URL, default=user_input.get(CONF_BASE_URL, "http://")
-                    ): str,
-                    vol.Optional(
-                        CONF_USERNAME, default=user_input.get(CONF_USERNAME, "")
-                    ): str,
-                    vol.Optional(
-                        CONF_PASSWORD, default=user_input.get(CONF_PASSWORD, "")
-                    ): str,
-                }
-            ),
+            step_id="credentials",
+            data_schema=vol.Schema(schema),
             errors=errors,
         )
 
@@ -64,11 +118,19 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     def async_get_options_flow(config_entry: config_entries.ConfigEntry):
         return OpenHABOptionsFlowHandler(config_entry)
 
-    async def _test_credentials(self, base_url: str, username: str, password: str):
+    async def _test_credentials(
+        self,
+        base_url: str,
+        auth_type: str,
+        auth_token: str,
+        username: str,
+        password: str,
+    ):
         """Return true if credentials is valid."""
         try:
-            # session = async_create_clientsession(self.hass)
-            client = OpenHABApiClient(self.hass, base_url, username, password)
+            client = OpenHABApiClient(
+                self.hass, base_url, auth_type, auth_token, username, password
+            )  # pylint: disable=broad-except
             await client.async_get_version()
             return True
         except Exception:  # pylint: disable=broad-except
@@ -93,7 +155,7 @@ class OpenHABOptionsFlowHandler(config_entries.OptionsFlow):
         if user_input is not None:
             self.options.update(user_input)
             return self.async_create_entry(
-                title=self.config_entry.data.get(CONF_USERNAME),
+                title=strip_ip(self.config_entry.data.get(CONF_BASE_URL)),
                 data=self.options,
             )
 

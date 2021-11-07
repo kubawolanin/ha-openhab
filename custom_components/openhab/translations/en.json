@@ -6,27 +6,34 @@
                 "description": "If you need help with the configuration have a look here: https://github.com/kubawolanin/ha-openhab",
                 "data": {
                     "base_url": "Base URL",
+                    "auth_type": "Authentication type"
+                }
+            },
+            "credentials": {
+                "title": "openHAB",
+                "description": "How to generate a API Token: https://www.openhab.org/docs/configuration/apitokens.html",
+                "data": {
                     "username": "Username",
-                    "password": "Password"
+                    "password": "Password",
+                    "auth_token": "API Token"
                 }
             }
         },
         "error": {
             "auth": "Username/Password is wrong."
         },
-        "abort": {
-            "single_instance_allowed": "Only a single instance is allowed."
-        }
+        "abort": {}
     },
     "options": {
         "step": {
             "user": {
                 "data": {
-                    "binary_sensor": "Binary sensor enabled",
-                    "cover": "Cover enabled",
-                    "device_tracker": "Device Tracker enabled",
-                    "sensor": "Sensor enabled",
-                    "switch": "Switch enabled"
+                    "binary_sensor": "Binary Sensor entities (Contact items) enabled",
+                    "cover": "Cover entities (Rollershutter items) enabled",
+                    "device_tracker": "Device Tracker entities (Location items) enabled",
+                    "light": "Light entities (Color, Dimmer items) enabled",
+                    "sensor": "Sensor entities (DateTime, Number, String items) enabled",
+                    "switch": "Switch entities (Switch items) enabled"
                 }
             }
         }
