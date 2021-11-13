@@ -33,7 +33,6 @@ class OpenHABEntity(CoordinatorEntity):
         self.hass = hass
         self.item = item
         self._id = item.name
-        self._attr_device_class_map = {}
 
         if not self.coordinator.api:
             self._base_url = ""
@@ -79,12 +78,12 @@ class OpenHABEntity(CoordinatorEntity):
         label = self.item.label.lower()
         device_classes = self._attr_device_class_map
 
-        if device_classes is not None:
+        if bool(device_classes):
             for device_class in device_classes:
                 if device_class in name or device_class in label:
                     return device_class
 
-        return ""
+        return
 
     @property
     def icon(self) -> str:
@@ -121,6 +120,7 @@ class OpenHABEntity(CoordinatorEntity):
             "tags": self.item.tags,
             "type": self.item.type_,
             "raw_state": self.item._raw_state,
+            "unit_of_measure": str(self.item.unit_of_measure),
         }
 
         if is_group and len(self.item.members):
