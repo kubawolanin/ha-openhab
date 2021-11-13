@@ -9,16 +9,16 @@ import voluptuous as vol
 from .api import OpenHABApiClient
 from .const import (
     AUTH_TYPES,
+    CONF_AUTH_TOKEN,
+    CONF_AUTH_TYPE,
+    CONF_AUTH_TYPE_BASIC,
+    CONF_AUTH_TYPE_TOKEN,
     CONF_BASE_URL,
     CONF_PASSWORD,
     CONF_USERNAME,
-    CONF_AUTH_TOKEN,
-    CONF_AUTH_TYPE_BASIC,
-    CONF_AUTH_TYPE,
-    CONF_AUTH_TYPE_TOKEN,
     DOMAIN,
-    PLATFORMS,
     LOGGER,
+    PLATFORMS,
 )
 from .utils import strip_ip
 
@@ -85,8 +85,7 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 return self.async_create_entry(
                     title=strip_ip(user_input[CONF_BASE_URL]), data=user_input
                 )
-            else:
-                errors["base"] = "auth"
+            errors["base"] = "auth"
 
         if user_input is None:
             user_input = {}
@@ -118,6 +117,7 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     def async_get_options_flow(config_entry: config_entries.ConfigEntry):
         return OpenHABOptionsFlowHandler(config_entry)
 
+    # pylint: disable=R0913
     async def _test_credentials(
         self,
         base_url: str,

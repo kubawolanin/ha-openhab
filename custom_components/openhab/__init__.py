@@ -9,9 +9,9 @@ from homeassistant.core import HomeAssistant
 
 from .api import OpenHABApiClient
 from .const import (
-    CONF_BASE_URL,
-    CONF_AUTH_TYPE,
     CONF_AUTH_TOKEN,
+    CONF_AUTH_TYPE,
+    CONF_BASE_URL,
     CONF_PASSWORD,
     CONF_USERNAME,
     DOMAIN,

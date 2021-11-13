@@ -3,6 +3,7 @@
 ICONS_MAP = {
     "alarm": "mdi:alarm-light",
     "attic": "mdi:stairs",
+    "areachart": "mdi:chart-areaspline",
     "baby_1": "mdi:baby",
     "baby_2": "mdi:baby",
     "baby_3": "mdi:baby",

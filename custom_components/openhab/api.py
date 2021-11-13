@@ -6,10 +6,7 @@ from typing import Any
 import aiohttp
 from openhab import OpenHAB
 
-from .const import (
-    CONF_AUTH_TYPE_BASIC,
-    CONF_AUTH_TYPE_TOKEN,
-)
+from .const import CONF_AUTH_TYPE_BASIC, CONF_AUTH_TYPE_TOKEN
 
 API_HEADERS = {aiohttp.hdrs.CONTENT_TYPE: "application/json; charset=UTF-8"}
 
@@ -21,6 +18,7 @@ class ApiClientException(Exception):
 class OpenHABApiClient:
     """API Client"""
 
+    # pylint: disable=R0913
     def __init__(
         self,
         hass,
@@ -42,7 +40,7 @@ class OpenHABApiClient:
             self.openhab = OpenHAB(self._rest_url)
 
         if auth_type == CONF_AUTH_TYPE_BASIC:
-            if len(username) > 0:
+            if username is not None and len(username) > 0:
                 self.openhab = OpenHAB(self._rest_url, self._username, self._password)
             else:
                 self.openhab = OpenHAB(self._rest_url)

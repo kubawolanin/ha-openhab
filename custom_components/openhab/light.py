@@ -1,9 +1,8 @@
 """Light platform for openHAB."""
-from typing import Any, cast
 
 from homeassistant.components.light import (
     ATTR_BRIGHTNESS,
-    PLATFORM_SCHEMA,
+    ATTR_HS_COLOR,
     COLOR_MODE_BRIGHTNESS,
     COLOR_MODE_HS,
     LightEntity,
@@ -14,7 +13,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DOMAIN, ITEMS_MAP, LIGHT
 from .entity import OpenHABEntity
-from .utils import str_to_hsv, hsv_to_str
+from .utils import hsv_to_str
 
 
 async def async_setup_entry(
@@ -30,38 +29,50 @@ async def async_setup_entry(
         for item in coordinator.data.values()
         if item.type_ == ITEMS_MAP[LIGHT][0]  # Color
     )
-    # async_add_devices(
-    #     OpenHABLightDimmer(hass, coordinator, item)
-    #     for item in coordinator.data.values()
-    #     if item.type_ == ITEMS_MAP[LIGHT][1]  # Dimmer
-    # )
+    async_add_devices(
+        OpenHABLightDimmer(hass, coordinator, item)
+        for item in coordinator.data.values()
+        if item.type_ == ITEMS_MAP[LIGHT][1]  # Dimmer
+    )
 
 
 class OpenHABLightColor(OpenHABEntity, LightEntity):
     """openHAB Color Light class."""
+
+    _attr_device_class_map = []
+    _attr_color_mode = COLOR_MODE_BRIGHTNESS
+    _attr_supported_color_modes = {COLOR_MODE_BRIGHTNESS, COLOR_MODE_HS}
 
     @property
     def is_on(self):
         """Return true if light is on."""
         return self.item._state[2] > 0
 
-    def turn_on(self, **kwargs):
+    async def async_turn_on(self, **kwargs):
         """Instruct the light to turn on."""
         if not self.item:
             return
+        if ATTR_HS_COLOR in kwargs:
+            return print(kwargs[ATTR_HS_COLOR])
         hsv = self.item._state
-        self.coordinator.api.openhab.req_post(
-            f"/items/{self._id}", data=hsv_to_str([hsv[0], hsv[1], 100])
+        await self.hass.async_add_executor_job(
+            self.coordinator.api.openhab.req_post,
+            f"/items/{self._id}",
+            data=hsv_to_str([hsv[0], hsv[1], 100]),
         )
+        await self.coordinator.async_request_refresh()
 
-    def turn_off(self, **kwargs):
+    async def async_turn_off(self, **kwargs):
         """Instruct the light to turn off."""
         if not self.item:
             return
         hsv = self.item._state
-        self.coordinator.api.openhab.req_post(
-            f"/items/{self._id}", data=hsv_to_str([hsv[0], hsv[1], 0])
+        await self.hass.async_add_executor_job(
+            self.coordinator.api.openhab.req_post,
+            f"/items/{self._id}",
+            data=hsv_to_str([hsv[0], hsv[1], 0]),
         )
+        await self.coordinator.async_request_refresh()
 
     # @property
     # def color_mode(self) -> str | None:
@@ -77,3 +88,43 @@ class OpenHABLightColor(OpenHABEntity, LightEntity):
 
 class OpenHABLightDimmer(OpenHABEntity, LightEntity):
     """openHAB Dimmer Light class."""
+
+    _attr_device_class_map = []
+    _attr_color_mode = COLOR_MODE_BRIGHTNESS
+    _attr_supported_color_modes = {COLOR_MODE_BRIGHTNESS}
+
+    @property
+    def is_on(self):
+        """Return true if light is on."""
+        return self.item._state > 0
+
+    @property
+    def brightness(self):
+        """Return the brightness of this light between 0..255."""
+        return int((self.item._state / 100) * 255)
+
+    async def async_turn_on(self, **kwargs):
+        """Instruct the light to turn on."""
+        if not self.item:
+            return
+        if ATTR_BRIGHTNESS in kwargs:
+            brightness = int(kwargs[ATTR_BRIGHTNESS] / 255) * 100
+            await self.hass.async_add_executor_job(
+                self.coordinator.api.openhab.req_post,
+                f"/items/{self._id}",
+                str(brightness),
+            )
+            return await self.coordinator.async_request_refresh()
+        await self.hass.async_add_executor_job(
+            self.coordinator.api.openhab.req_post, f"/items/{self._id}", "ON"
+        )
+        await self.coordinator.async_request_refresh()
+
+    async def async_turn_off(self, **kwargs):
+        """Instruct the light to turn off."""
+        if not self.item:
+            return
+        await self.hass.async_add_executor_job(
+            self.coordinator.api.openhab.req_post, f"/items/{self._id}", "OFF"
+        )
+        await self.coordinator.async_request_refresh()

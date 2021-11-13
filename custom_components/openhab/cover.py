@@ -37,34 +37,46 @@ class OpenHABCover(OpenHABEntity, CoverEntity):
         None is unknown, 0 is closed, 100 is fully open.
         """
         if not self.item._state:
-            return None
+            return 0
         return 100 - cast(int, self.item._state)
 
-    def set_cover_position(self, **kwargs: dict[str, Any]) -> None:
+    async def async_set_cover_position(self, **kwargs: dict[str, Any]) -> None:
         """Move the cover to a specific position."""
         if not self.item:
             return
-        self.coordinator.api.openhab.req_post(
-            f"/items/{self._id}", data=str(kwargs[ATTR_POSITION])
+        await self.hass.async_add_executor_job(
+            self.coordinator.api.openhab.req_post,
+            f"/items/{self._id}",
+            str(kwargs[ATTR_POSITION]),
         )
+        await self.coordinator.async_request_refresh()
 
-    def open_cover(self, **kwargs: dict[str, Any]) -> None:
+    async def async_open_cover(self, **kwargs: dict[str, Any]) -> None:
         """Open the cover."""
         if not self.item:
             return
-        self.coordinator.api.openhab.req_post(f"/items/{self._id}", data="UP")
+        await self.hass.async_add_executor_job(
+            self.coordinator.api.openhab.req_post, f"/items/{self._id}", "UP"
+        )
+        await self.coordinator.async_request_refresh()
 
-    def close_cover(self, **kwargs: dict[str, Any]) -> None:
+    async def async_close_cover(self, **kwargs: dict[str, Any]) -> None:
         """Close cover."""
         if not self.item:
             return
-        self.coordinator.api.openhab.req_post(f"/items/{self._id}", data="DOWN")
+        await self.hass.async_add_executor_job(
+            self.coordinator.api.openhab.req_post, f"/items/{self._id}", "DOWN"
+        )
+        await self.coordinator.async_request_refresh()
 
-    def stop_cover(self, **kwargs: dict[str, Any]) -> None:
+    async def async_stop_cover(self, **kwargs: dict[str, Any]) -> None:
         """Close cover."""
         if not self.item:
             return
-        self.coordinator.api.openhab.req_post(f"/items/{self._id}", data="STOP")
+        await self.hass.async_add_executor_job(
+            self.coordinator.api.openhab.req_post, f"/items/{self._id}", "STOP"
+        )
+        await self.coordinator.async_request_refresh()
 
     @property
     def is_closed(self) -> bool:

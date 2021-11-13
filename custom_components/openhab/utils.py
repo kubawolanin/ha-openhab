@@ -8,8 +8,8 @@ def strip_ip(url: str):
 
 def str_to_hsv(state: str) -> tuple[float, float, float]:
     """Convert state string to hsv tuple"""
-    c = state.split(",")
-    return [float(c[0]), float(c[1]), float(c[2])]
+    color = state.split(",")
+    return [float(color[0]), float(color[1]), float(color[2])]
 
 
 def hsv_to_str(hsv: tuple[float, float, float]) -> str:

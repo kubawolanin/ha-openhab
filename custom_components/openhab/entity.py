@@ -41,6 +41,9 @@ class OpenHABEntity(CoordinatorEntity):
 
         self.entity_id = f"{DOMAIN}_{self._host}_{self.item.name}"
 
+        if self.item.unit_of_measure:
+            self._attr_native_unit_of_measurement = str(self.item.unit_of_measure)
+
     @property
     def available(self):
         """Return True if entity is available."""
@@ -83,7 +86,7 @@ class OpenHABEntity(CoordinatorEntity):
                 if device_class in name or device_class in label:
                     return device_class
 
-        return
+        return ""
 
     @property
     def icon(self) -> str:
