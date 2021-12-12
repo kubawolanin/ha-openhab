@@ -139,3 +139,9 @@ class OpenHABEntity(CoordinatorEntity):
         """Handle updated data from the coordinator."""
         self.item = self.coordinator.data.get(self._id)
         self.async_write_ha_state()
+
+    async def async_added_to_hass(self) -> None:
+        """Connect to dispatcher listening for entity data notifications."""
+        self.async_on_remove(
+            self.coordinator.async_add_listener(self.async_write_ha_state)
+        )

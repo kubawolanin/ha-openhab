@@ -32,6 +32,7 @@
                     "cover": "Cover entities (Rollershutter items) enabled",
                     "device_tracker": "Device Tracker entities (Location items) enabled",
                     "light": "Light entities (Color, Dimmer items) enabled",
+                    "media_player": "Media Player entities (Player items) enabled",
                     "sensor": "Sensor entities (DateTime, Number, String items) enabled",
                     "switch": "Switch entities (Switch items) enabled"
                 }

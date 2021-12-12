@@ -96,6 +96,8 @@ class OpenHABLightDimmer(OpenHABEntity, LightEntity):
     @property
     def is_on(self):
         """Return true if light is on."""
+        if self.item._state is None:
+            return False
         return self.item._state > 0
 
     @property
