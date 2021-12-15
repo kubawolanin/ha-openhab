@@ -133,8 +133,8 @@ class OpenHABFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             )  # pylint: disable=broad-except
             await client.async_get_version()
             return True
-        except Exception:  # pylint: disable=broad-except
-            pass
+        except Exception as error:  # pylint: disable=broad-except
+            raise error
         return False
 
 
