@@ -61,6 +61,18 @@ custom_components/openhab/switch.py
 
 <!---->
 
+## Icons
+
+To show the icons, we are taking openHAB Items "category" field and then matching its value with predefined map (based on classic iconset and Material Design Icons). If none is returned, we proceed with checking the Item's type (Switch, String, Number, Contact and so on) - all of these have their own icon as well.
+
+## Device classes
+
+Device class of each Entity is assigned dynamically based on Items name or label.
+
+## Changes in openHAB Items
+
+When you add/remove Items in openHAB, simply reload the integration in Home Assistant. New entities will appear automatically after reloading the custom component.
+
 ## Contributions are welcome!
 
 If you want to contribute to this please read the [Contribution guidelines](CONTRIBUTING.md)
