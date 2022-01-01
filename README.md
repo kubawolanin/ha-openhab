@@ -31,7 +31,15 @@ In the future this integration will also support the following platforms:
 | `camera`       | `Image`           |
 | `media_player` | `Player`          |
 
-## Installation
+## HACS Installation
+
+1. Go to http://homeassistant.local:8123/hacs/integrations
+1. Add `https://github.com/kubawolanin/ha-openhab` custom integration repository
+1. Download the openHAB repository
+1. Go to http://homeassistant.local:8123/config/integrations and add new integration
+1. Choose "openHAB" from the list and follow the config flow steps
+
+## Manual Installation
 
 1. Using the tool of choice open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 2. If you do not have a `custom_components` directory (folder) there, you need to create it.
