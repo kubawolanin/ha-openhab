@@ -5,6 +5,8 @@ from typing import Any, List
 
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.device_registry import DeviceEntryType
+
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from openhab import items
 
@@ -71,7 +73,7 @@ class OpenHABEntity(CoordinatorEntity):
             model=version,
             manufacturer=NAME,
             configuration_url=self._base_url,
-            entry_type="service",
+            entry_type=DeviceEntryType.SERVICE,
         )
 
     @property
